@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OA.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="modeDataShare_5">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sourceid" Type="int" />
+          <Property Name="type" Type="int" />
+          <Property Name="content" Type="int" />
+          <Property Name="seclevel" Type="int" />
+          <Property Name="sharelevel" Type="int" />
+          <Property Name="srcfrom" Type="int" />
+          <Property Name="opuser" Type="int" />
+          <Property Name="isDefault" Type="int" />
+          <Property Name="layoutid" Type="int" />
+          <Property Name="layoutid1" Type="int" />
+          <Property Name="layoutorder" Type="int" />
+          <Property Name="sharesetid" Type="int" />
+          <Property Name="higherlevel" Type="int" />
+          <Property Name="setid" Type="int" />
+          <Property Name="rightid" Type="int" />
+          <Property Name="requestid" Type="int" />
+          <Property Name="showlevel2" Type="int" />
+          <Property Name="joblevel" Type="int" />
+          <Property Name="jobleveltext" Type="varchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="modeDataShare_5_set">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sourceid" Type="int" />
+          <Property Name="righttype" Type="int" />
+          <Property Name="sharetype" Type="int" />
+          <Property Name="relatedid" Type="int" />
+          <Property Name="rolelevel" Type="int" />
+          <Property Name="showlevel" Type="int" />
+          <Property Name="isdefault" Type="int" />
+          <Property Name="layoutid" Type="int" />
+          <Property Name="layoutid1" Type="int" />
+          <Property Name="layoutorder" Type="int" />
+          <Property Name="isrolelimited" Type="int" />
+          <Property Name="rolefieldtype" Type="int" />
+          <Property Name="rolefield" Type="int" />
+          <Property Name="higherlevel" Type="int" />
+          <Property Name="rightid" Type="int" />
+          <Property Name="requestid" Type="int" />
+          <Property Name="showlevel2" Type="int" />
+          <Property Name="hrmCompanyVirtualType" Type="int" />
+          <Property Name="orgrelation" Type="int" />
+          <Property Name="joblevel" Type="int" />
+          <Property Name="jobleveltext" Type="varchar" MaxLength="4000" />
+          <Property Name="SETUUID" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“TEST.dbo.moderightinfo”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="moderightinfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="modeid" Type="int" />
+          <Property Name="righttype" Type="int" />
+          <Property Name="sharetype" Type="int" />
+          <Property Name="relatedid" Type="int" />
+          <Property Name="rolelevel" Type="int" />
+          <Property Name="showlevel" Type="int" />
+          <Property Name="javafilename" Type="varchar" MaxLength="1000" />
+          <Property Name="layoutid" Type="int" />
+          <Property Name="layoutid1" Type="int" />
+          <Property Name="layoutorder" Type="int" />
+          <Property Name="isrolelimited" Type="int" />
+          <Property Name="rolefieldtype" Type="int" />
+          <Property Name="rolefield" Type="int" />
+          <Property Name="higherlevel" Type="int" />
+          <Property Name="importtype" Type="int" />
+          <Property Name="conditiontype" Type="int" />
+          <Property Name="conditionsql" Type="varchar" MaxLength="4000" />
+          <Property Name="conditiontext" Type="varchar" MaxLength="4000" />
+          <Property Name="showlevel2" Type="int" />
+          <Property Name="modifytime" Type="varchar" MaxLength="30" />
+          <Property Name="hrmCompanyVirtualType" Type="varchar" MaxLength="400" />
+          <Property Name="orgrelation" Type="int" />
+          <Property Name="joblevel" Type="int" />
+          <Property Name="jobleveltext" Type="varchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="uf_zh_PurchaseOrder">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="requestId" Type="int" />
+          <Property Name="Cg_no" Type="varchar" MaxLength="500" />
+          <Property Name="company" Type="varchar" MaxLength="500" />
+          <Property Name="Sup_no" Type="varchar" MaxLength="500" />
+          <Property Name="Sup_name" Type="varchar" MaxLength="500" />
+          <Property Name="Pay_type" Type="varchar" MaxLength="500" />
+          <Property Name="Ship_addr" Type="varchar" MaxLength="500" />
+          <Property Name="formmodeid" Type="int" />
+          <Property Name="modedatacreater" Type="int" />
+          <Property Name="modedatacreatertype" Type="int" />
+          <Property Name="modedatacreatedate" Type="varchar" MaxLength="10" />
+          <Property Name="modedatacreatetime" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="uf_zh_PurchaseOrder_dt1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mainid" Type="int" />
+          <Property Name="Cg_no" Type="varchar" MaxLength="500" />
+          <Property Name="Mat_id" Type="varchar" MaxLength="500" />
+          <Property Name="Mat_name" Type="varchar" MaxLength="500" />
+          <Property Name="color" Type="varchar" MaxLength="500" />
+          <Property Name="Col_code" Type="varchar" MaxLength="500" />
+          <Property Name="quantity" Type="varchar" MaxLength="50" />
+          <Property Name="price" Type="varchar" MaxLength="50" />
+          <Property Name="Pack_price" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="OAStoreContainer">
+          <EntitySet Name="modeDataShare_5" EntityType="Self.modeDataShare_5" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="modeDataShare_5_set" EntityType="Self.modeDataShare_5_set" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="uf_zh_PurchaseOrder" EntityType="Self.uf_zh_PurchaseOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="uf_zh_PurchaseOrder_dt1" EntityType="Self.uf_zh_PurchaseOrder_dt1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="moderightinfo" EntityType="Self.moderightinfo" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [moderightinfo].[id] AS [id], 
+    [moderightinfo].[modeid] AS [modeid], 
+    [moderightinfo].[righttype] AS [righttype], 
+    [moderightinfo].[sharetype] AS [sharetype], 
+    [moderightinfo].[relatedid] AS [relatedid], 
+    [moderightinfo].[rolelevel] AS [rolelevel], 
+    [moderightinfo].[showlevel] AS [showlevel], 
+    [moderightinfo].[javafilename] AS [javafilename], 
+    [moderightinfo].[layoutid] AS [layoutid], 
+    [moderightinfo].[layoutid1] AS [layoutid1], 
+    [moderightinfo].[layoutorder] AS [layoutorder], 
+    [moderightinfo].[isrolelimited] AS [isrolelimited], 
+    [moderightinfo].[rolefieldtype] AS [rolefieldtype], 
+    [moderightinfo].[rolefield] AS [rolefield], 
+    [moderightinfo].[higherlevel] AS [higherlevel], 
+    [moderightinfo].[importtype] AS [importtype], 
+    [moderightinfo].[conditiontype] AS [conditiontype], 
+    [moderightinfo].[conditionsql] AS [conditionsql], 
+    [moderightinfo].[conditiontext] AS [conditiontext], 
+    [moderightinfo].[showlevel2] AS [showlevel2], 
+    [moderightinfo].[modifytime] AS [modifytime], 
+    [moderightinfo].[hrmCompanyVirtualType] AS [hrmCompanyVirtualType], 
+    [moderightinfo].[orgrelation] AS [orgrelation], 
+    [moderightinfo].[joblevel] AS [joblevel], 
+    [moderightinfo].[jobleveltext] AS [jobleveltext]
+    FROM [dbo].[moderightinfo] AS [moderightinfo]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="OA" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="OAContainer1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="uf_zh_PurchaseOrder" EntityType="OA.uf_zh_PurchaseOrder" />
+          <EntitySet Name="uf_zh_PurchaseOrder_dt1" EntityType="OA.uf_zh_PurchaseOrder_dt1" />
+          <EntitySet Name="modeDataShare_5" EntityType="OA.modeDataShare_5" />
+          <EntitySet Name="modeDataShare_5_set" EntityType="OA.modeDataShare_5_set" />
+          <EntitySet Name="moderightinfo" EntityType="OA.moderightinfo" />
+        </EntityContainer>
+        <EntityType Name="uf_zh_PurchaseOrder">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="requestId" Type="Int32" />
+          <Property Name="Cg_no" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="company" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Sup_no" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Sup_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Pay_type" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Ship_addr" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="formmodeid" Type="Int32" />
+          <Property Name="modedatacreater" Type="Int32" />
+          <Property Name="modedatacreatertype" Type="Int32" />
+          <Property Name="modedatacreatedate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="modedatacreatetime" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="uf_zh_PurchaseOrder_dt1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mainid" Type="Int32" />
+          <Property Name="Cg_no" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Mat_id" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Mat_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="color" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Col_code" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="quantity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pack_price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="modeDataShare_5">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sourceid" Type="Int32" />
+          <Property Name="type" Type="Int32" />
+          <Property Name="content" Type="Int32" />
+          <Property Name="seclevel" Type="Int32" />
+          <Property Name="sharelevel" Type="Int32" />
+          <Property Name="srcfrom" Type="Int32" />
+          <Property Name="opuser" Type="Int32" />
+          <Property Name="isDefault" Type="Int32" />
+          <Property Name="layoutid" Type="Int32" />
+          <Property Name="layoutid1" Type="Int32" />
+          <Property Name="layoutorder" Type="Int32" />
+          <Property Name="sharesetid" Type="Int32" />
+          <Property Name="higherlevel" Type="Int32" />
+          <Property Name="setid" Type="Int32" />
+          <Property Name="rightid" Type="Int32" />
+          <Property Name="requestid" Type="Int32" />
+          <Property Name="showlevel2" Type="Int32" />
+          <Property Name="joblevel" Type="Int32" />
+          <Property Name="jobleveltext" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="modeDataShare_5_set">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sourceid" Type="Int32" />
+          <Property Name="righttype" Type="Int32" />
+          <Property Name="sharetype" Type="Int32" />
+          <Property Name="relatedid" Type="Int32" />
+          <Property Name="rolelevel" Type="Int32" />
+          <Property Name="showlevel" Type="Int32" />
+          <Property Name="isdefault" Type="Int32" />
+          <Property Name="layoutid" Type="Int32" />
+          <Property Name="layoutid1" Type="Int32" />
+          <Property Name="layoutorder" Type="Int32" />
+          <Property Name="isrolelimited" Type="Int32" />
+          <Property Name="rolefieldtype" Type="Int32" />
+          <Property Name="rolefield" Type="Int32" />
+          <Property Name="higherlevel" Type="Int32" />
+          <Property Name="rightid" Type="Int32" />
+          <Property Name="requestid" Type="Int32" />
+          <Property Name="showlevel2" Type="Int32" />
+          <Property Name="hrmCompanyVirtualType" Type="Int32" />
+          <Property Name="orgrelation" Type="Int32" />
+          <Property Name="joblevel" Type="Int32" />
+          <Property Name="jobleveltext" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="SETUUID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="moderightinfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="modeid" Type="Int32" />
+          <Property Name="righttype" Type="Int32" />
+          <Property Name="sharetype" Type="Int32" />
+          <Property Name="relatedid" Type="Int32" />
+          <Property Name="rolelevel" Type="Int32" />
+          <Property Name="showlevel" Type="Int32" />
+          <Property Name="javafilename" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="layoutid" Type="Int32" />
+          <Property Name="layoutid1" Type="Int32" />
+          <Property Name="layoutorder" Type="Int32" />
+          <Property Name="isrolelimited" Type="Int32" />
+          <Property Name="rolefieldtype" Type="Int32" />
+          <Property Name="rolefield" Type="Int32" />
+          <Property Name="higherlevel" Type="Int32" />
+          <Property Name="importtype" Type="Int32" />
+          <Property Name="conditiontype" Type="Int32" />
+          <Property Name="conditionsql" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="conditiontext" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="showlevel2" Type="Int32" />
+          <Property Name="modifytime" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="hrmCompanyVirtualType" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="orgrelation" Type="Int32" />
+          <Property Name="joblevel" Type="Int32" />
+          <Property Name="jobleveltext" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="OA" />
+        <Alias Key="Target" Value="OA.Store" />
+        <EntityContainerMapping CdmEntityContainer="OAContainer1" StorageEntityContainer="OAStoreContainer">
+          <EntitySetMapping Name="uf_zh_PurchaseOrder">
+            <EntityTypeMapping TypeName="OA.uf_zh_PurchaseOrder">
+              <MappingFragment StoreEntitySet="uf_zh_PurchaseOrder">
+                <ScalarProperty Name="modedatacreatetime" ColumnName="modedatacreatetime" />
+                <ScalarProperty Name="modedatacreatedate" ColumnName="modedatacreatedate" />
+                <ScalarProperty Name="modedatacreatertype" ColumnName="modedatacreatertype" />
+                <ScalarProperty Name="modedatacreater" ColumnName="modedatacreater" />
+                <ScalarProperty Name="formmodeid" ColumnName="formmodeid" />
+                <ScalarProperty Name="Ship_addr" ColumnName="Ship_addr" />
+                <ScalarProperty Name="Pay_type" ColumnName="Pay_type" />
+                <ScalarProperty Name="Sup_name" ColumnName="Sup_name" />
+                <ScalarProperty Name="Sup_no" ColumnName="Sup_no" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="Cg_no" ColumnName="Cg_no" />
+                <ScalarProperty Name="requestId" ColumnName="requestId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="uf_zh_PurchaseOrder_dt1">
+            <EntityTypeMapping TypeName="OA.uf_zh_PurchaseOrder_dt1">
+              <MappingFragment StoreEntitySet="uf_zh_PurchaseOrder_dt1">
+                <ScalarProperty Name="Pack_price" ColumnName="Pack_price" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="Col_code" ColumnName="Col_code" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="Mat_name" ColumnName="Mat_name" />
+                <ScalarProperty Name="Mat_id" ColumnName="Mat_id" />
+                <ScalarProperty Name="Cg_no" ColumnName="Cg_no" />
+                <ScalarProperty Name="mainid" ColumnName="mainid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="modeDataShare_5">
+            <EntityTypeMapping TypeName="OA.modeDataShare_5">
+              <MappingFragment StoreEntitySet="modeDataShare_5">
+                <ScalarProperty Name="jobleveltext" ColumnName="jobleveltext" />
+                <ScalarProperty Name="joblevel" ColumnName="joblevel" />
+                <ScalarProperty Name="showlevel2" ColumnName="showlevel2" />
+                <ScalarProperty Name="requestid" ColumnName="requestid" />
+                <ScalarProperty Name="rightid" ColumnName="rightid" />
+                <ScalarProperty Name="setid" ColumnName="setid" />
+                <ScalarProperty Name="higherlevel" ColumnName="higherlevel" />
+                <ScalarProperty Name="sharesetid" ColumnName="sharesetid" />
+                <ScalarProperty Name="layoutorder" ColumnName="layoutorder" />
+                <ScalarProperty Name="layoutid1" ColumnName="layoutid1" />
+                <ScalarProperty Name="layoutid" ColumnName="layoutid" />
+                <ScalarProperty Name="isDefault" ColumnName="isDefault" />
+                <ScalarProperty Name="opuser" ColumnName="opuser" />
+                <ScalarProperty Name="srcfrom" ColumnName="srcfrom" />
+                <ScalarProperty Name="sharelevel" ColumnName="sharelevel" />
+                <ScalarProperty Name="seclevel" ColumnName="seclevel" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="sourceid" ColumnName="sourceid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="modeDataShare_5_set">
+            <EntityTypeMapping TypeName="OA.modeDataShare_5_set">
+              <MappingFragment StoreEntitySet="modeDataShare_5_set">
+                <ScalarProperty Name="SETUUID" ColumnName="SETUUID" />
+                <ScalarProperty Name="jobleveltext" ColumnName="jobleveltext" />
+                <ScalarProperty Name="joblevel" ColumnName="joblevel" />
+                <ScalarProperty Name="orgrelation" ColumnName="orgrelation" />
+                <ScalarProperty Name="hrmCompanyVirtualType" ColumnName="hrmCompanyVirtualType" />
+                <ScalarProperty Name="showlevel2" ColumnName="showlevel2" />
+                <ScalarProperty Name="requestid" ColumnName="requestid" />
+                <ScalarProperty Name="rightid" ColumnName="rightid" />
+                <ScalarProperty Name="higherlevel" ColumnName="higherlevel" />
+                <ScalarProperty Name="rolefield" ColumnName="rolefield" />
+                <ScalarProperty Name="rolefieldtype" ColumnName="rolefieldtype" />
+                <ScalarProperty Name="isrolelimited" ColumnName="isrolelimited" />
+                <ScalarProperty Name="layoutorder" ColumnName="layoutorder" />
+                <ScalarProperty Name="layoutid1" ColumnName="layoutid1" />
+                <ScalarProperty Name="layoutid" ColumnName="layoutid" />
+                <ScalarProperty Name="isdefault" ColumnName="isdefault" />
+                <ScalarProperty Name="showlevel" ColumnName="showlevel" />
+                <ScalarProperty Name="rolelevel" ColumnName="rolelevel" />
+                <ScalarProperty Name="relatedid" ColumnName="relatedid" />
+                <ScalarProperty Name="sharetype" ColumnName="sharetype" />
+                <ScalarProperty Name="righttype" ColumnName="righttype" />
+                <ScalarProperty Name="sourceid" ColumnName="sourceid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="moderightinfo">
+            <EntityTypeMapping TypeName="OA.moderightinfo">
+              <MappingFragment StoreEntitySet="moderightinfo">
+                <ScalarProperty Name="jobleveltext" ColumnName="jobleveltext" />
+                <ScalarProperty Name="joblevel" ColumnName="joblevel" />
+                <ScalarProperty Name="orgrelation" ColumnName="orgrelation" />
+                <ScalarProperty Name="hrmCompanyVirtualType" ColumnName="hrmCompanyVirtualType" />
+                <ScalarProperty Name="modifytime" ColumnName="modifytime" />
+                <ScalarProperty Name="showlevel2" ColumnName="showlevel2" />
+                <ScalarProperty Name="conditiontext" ColumnName="conditiontext" />
+                <ScalarProperty Name="conditionsql" ColumnName="conditionsql" />
+                <ScalarProperty Name="conditiontype" ColumnName="conditiontype" />
+                <ScalarProperty Name="importtype" ColumnName="importtype" />
+                <ScalarProperty Name="higherlevel" ColumnName="higherlevel" />
+                <ScalarProperty Name="rolefield" ColumnName="rolefield" />
+                <ScalarProperty Name="rolefieldtype" ColumnName="rolefieldtype" />
+                <ScalarProperty Name="isrolelimited" ColumnName="isrolelimited" />
+                <ScalarProperty Name="layoutorder" ColumnName="layoutorder" />
+                <ScalarProperty Name="layoutid1" ColumnName="layoutid1" />
+                <ScalarProperty Name="layoutid" ColumnName="layoutid" />
+                <ScalarProperty Name="javafilename" ColumnName="javafilename" />
+                <ScalarProperty Name="showlevel" ColumnName="showlevel" />
+                <ScalarProperty Name="rolelevel" ColumnName="rolelevel" />
+                <ScalarProperty Name="relatedid" ColumnName="relatedid" />
+                <ScalarProperty Name="sharetype" ColumnName="sharetype" />
+                <ScalarProperty Name="righttype" ColumnName="righttype" />
+                <ScalarProperty Name="modeid" ColumnName="modeid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
