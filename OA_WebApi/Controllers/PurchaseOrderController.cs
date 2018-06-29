@@ -80,7 +80,14 @@ namespace OA_WebApi.Controllers
         //插入权限数据
         private void InsertRights(int sourceid)
         {
-            //过滤条件
+            //过滤条件，跟踪出来系统就是这些，不知道是什么意思
+            /*
+             原查询语句是：
+                SELECT * FROM    moderightinfo
+                WHERE   modeid = 5
+                AND ( sharetype IN ( 80, 90 ) OR sharetype NOT IN ( 80, 81, 84, 85, 89, 90 ) )
+                AND righttype IN ( 1, 2, 3 )
+             */
             int?[] shareType = new int?[] { 80, 90 };
             int?[] shareTypeNotIn = new int?[] { 80, 81, 84, 85, 89, 90 };
             int?[] rightType = new int?[] { 1, 2, 3 };
