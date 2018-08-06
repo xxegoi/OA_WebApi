@@ -25,10 +25,11 @@ namespace OA_WebApi.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<uf_zh_PurchaseOrder> uf_zh_PurchaseOrder { get; set; }
-        public virtual DbSet<uf_zh_PurchaseOrder_dt1> uf_zh_PurchaseOrder_dt1 { get; set; }
         public virtual DbSet<modeDataShare_5> modeDataShare_5 { get; set; }
         public virtual DbSet<modeDataShare_5_set> modeDataShare_5_set { get; set; }
         public virtual DbSet<moderightinfo> moderightinfo { get; set; }
+        public virtual DbSet<uf_zh_PurchaseOrder_dt1> uf_zh_PurchaseOrder_dt1 { get; set; }
+        public virtual DbSet<uf_zh_PurchaseOrder> uf_zh_PurchaseOrder { get; set; }
+        public virtual DbSet<formtable_main_84> formtable_main_84 { get; set; }
     }
 }

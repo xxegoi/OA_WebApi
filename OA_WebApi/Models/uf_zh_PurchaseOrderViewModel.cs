@@ -14,6 +14,9 @@ namespace OA_WebApi.Models
         public string Sup_name { get; set; }
         public string Pay_type { get; set; }
         public string Ship_addr { get; set; }
-
+        public string Sup_fullname { get; set; }
+        public string DeliveryStart { get; set; }
+        public string DeliveryEnd { get; set; }
+        public string JSFS { get; set; }
     }
 }

@@ -27,5 +27,9 @@ namespace OA_WebApi.Models
         public Nullable<int> modedatacreatertype { get; set; }
         public string modedatacreatedate { get; set; }
         public string modedatacreatetime { get; set; }
+        public string Sup_fullname { get; set; }
+        public string DeliveryStart { get; set; }
+        public string DeliveryEnd { get; set; }
+        public string JSFS { get; set; }
     }
 }

@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+
 
 namespace OA_WebApi.Models
 {
     public class uf_zh_PurchaseOrder_dt1ViewModel
     {
+        
         public string Cg_no { get; set; }
         public string Mat_id { get; set; }
         public string Mat_name { get; set; }
         public string color { get; set; }
         public string Col_code { get; set; }
+
         /// <summary>
         /// 重量
         /// </summary>
@@ -23,6 +27,10 @@ namespace OA_WebApi.Models
         /// <summary>
         /// 采购单价
         /// </summary>
-        public double Pack_price { get; set; }
+        public string Pack_price { get; set; }
+        /// <summary>
+        /// 交货期
+        /// </summary>
+        public string Delivery { get; set; }
     }
 }

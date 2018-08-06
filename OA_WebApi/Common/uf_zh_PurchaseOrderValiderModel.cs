@@ -15,31 +15,55 @@ namespace OA_WebApi.Common
         {
             var H = typeof(uf_zh_PurchaseOrderViewModel);
             var D = typeof(uf_zh_PurchaseOrder_dt1ViewModel);
+            message = "";
 
             var pis = H.GetProperties().ToList();
             var data = obj["cgmx"];
 
             foreach (var p in pis)
             {
-                var item = obj[p.Name];
-                if (item == null)
+                var item = obj[p.Name.ToLower()];
+                
+                if (item == null&&p.Name.ToLower()!="ship_addr")
                 {
-                    message = p.Name + "值为null";
+                    message += p.Name + "值为null";
                     header = null;
                     details = null;
                     return false;
                 }
 
-                if (p.Name == "Cg_no")
+                if (p.Name.ToLower() == "cg_no")
                 {
                     var cg_no = item.ToString();
+                    message +="cg_no："+ cg_no+"\t";
 
                     if (db.uf_zh_PurchaseOrder.Count(o => o.Cg_no == cg_no) > 0)
                     {
-                        message = "已存在 " + cg_no + " 的单据信息";
-                        header = null;
-                        details = null;
-                        return false;
+                        var order = db.uf_zh_PurchaseOrder.SingleOrDefault(a => a.Cg_no == cg_no);
+                        var id = order.id.ToString();
+                        if (db.formtable_main_84.Count(a => a.cght == id) > 0)
+                        {
+                            header = null;
+                            details = null;
+                            message +=  "已有审批流程在运转，不能重复插入";
+                            return false;
+                        }
+                        else
+                        {
+                            var h = db.uf_zh_PurchaseOrder.SingleOrDefault(a => a.Cg_no == cg_no);
+                            var detail = db.uf_zh_PurchaseOrder_dt1.Where(a => a.mainid == h.id).ToList();
+
+                            db.Entry(h).State = System.Data.Entity.EntityState.Deleted;
+                            detail.ForEach(a =>
+                            {
+                                db.Entry(a).State = System.Data.Entity.EntityState.Deleted;
+                            });
+                            db.SaveChanges();
+
+                            message += "已存在：" + cg_no + "单据，但未有流程在运转，本次将删除旧数据插入新值";
+
+                            LogHandler.Info(message);
+                        }
                     }
                 }
             }
@@ -47,7 +71,7 @@ namespace OA_WebApi.Common
             
             if (data == null)
             {
-                message = "明细记录为null";
+                message += "明细记录为null";
                 header = null;
                 details = null;
                 return false;
@@ -59,10 +83,10 @@ namespace OA_WebApi.Common
                 {
                     foreach (var row in data.ToList())
                     {
-                        var item = row[p.Name];
+                        var item = row[p.Name.ToLower()];
                         if (item == null)
                         {
-                            message = p.Name + "值为null";
+                            message += p.Name + "值为null";
                             header = null;
                             details = null;
                             return false;
@@ -73,16 +97,24 @@ namespace OA_WebApi.Common
                             double value;
                             if (!double.TryParse(item.ToString(), out value))
                             {
-                                message = p.Name + "值类型错误，必须为数字";
+                                message += p.Name + "值类型错误，必须为数字";
                                 header = null;
                                 details = null;
                                 return false;
                             }
+
+                            if (value == 0)
+                            {
+                                message += p.Name + "不能为零";
+                                header = null;
+                                details = null;
+                                return false;
+                            }
+
                         }
                     }
                 }
             }
-            message = "";
             header = GetHeader(obj);
             details = GetDetails(data.ToList());
             return true;
@@ -97,8 +129,9 @@ namespace OA_WebApi.Common
 
             foreach (var p in pis)
             {
-                var value = obj[p.Name].ToString() ;
-                p.SetValue(item, value);
+                var item1 = obj[p.Name.ToLower()];
+                if(item!=null&&p.Name.ToLower()!="ship_addr")
+                    p.SetValue(item, item1.ToString());
             }
 
             uf_zh_PurchaseOrder result = new uf_zh_PurchaseOrder()
@@ -113,7 +146,11 @@ namespace OA_WebApi.Common
                 modedatacreater = 1,
                 modedatacreatedate = DateTime.Now.Date.ToString("yyyy-MM-dd"),
                 modedatacreatetime = DateTime.Now.ToString("hh:mm:ss"),
-                modedatacreatertype=0
+                modedatacreatertype = 0,
+                Sup_fullname = item.Sup_fullname,
+                DeliveryStart = Convert.ToDateTime(item.DeliveryStart).ToString("yyyy-MM-dd"),
+                DeliveryEnd= Convert.ToDateTime(item.DeliveryEnd).ToString("yyyy-MM-dd"),
+                JSFS =item.JSFS
             };
             return result;
         }
@@ -121,7 +158,7 @@ namespace OA_WebApi.Common
         private static List<uf_zh_PurchaseOrder_dt1> GetDetails(List<JToken> dataList)
         {
             var t = typeof(uf_zh_PurchaseOrder_dt1);
-            var pis = t.GetProperties().Where(p=>p.PropertyType!=typeof(Nullable)&&p.Name!="id"&&p.Name!= "mainid").ToList();
+            var pis = t.GetProperties().Where(p=>p.PropertyType!=typeof(Nullable)&&p.Name!="id"&&p.Name!= "mainid"&&!p.Name.Contains("delivery")).ToList();
             var result =new List<uf_zh_PurchaseOrder_dt1>();
 
             dataList.ForEach(r =>
@@ -131,7 +168,7 @@ namespace OA_WebApi.Common
 
                 pis.ForEach(p =>
                 {
-                    p.SetValue(item, rowdata[p.Name].ToString());
+                    p.SetValue(item, rowdata[p.Name.ToLower()].ToString());
                 });
 
                 result.Add(item);

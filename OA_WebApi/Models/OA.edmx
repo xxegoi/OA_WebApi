@@ -5,6 +5,38 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="OA.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="formtable_main_84">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="requestId" Type="int" />
+          <Property Name="lcbh" Type="varchar" MaxLength="999" />
+          <Property Name="sqgs" Type="int" />
+          <Property Name="jbbm" Type="int" />
+          <Property Name="jbr" Type="int" />
+          <Property Name="sqrq" Type="char" MaxLength="10" />
+          <Property Name="htjf" Type="varchar" MaxLength="999" />
+          <Property Name="htyf" Type="varchar" MaxLength="999" />
+          <Property Name="htbd" Type="varchar" MaxLength="999" />
+          <Property Name="fkfs" Type="varchar" MaxLength="999" />
+          <Property Name="htzje" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="xmcgspd" Type="char" MaxLength="1" />
+          <Property Name="yshzspd" Type="char" MaxLength="1" />
+          <Property Name="xjd" Type="char" MaxLength="1" />
+          <Property Name="yjb" Type="char" MaxLength="1" />
+          <Property Name="htfj" Type="char" MaxLength="1" />
+          <Property Name="fjsc" Type="text" />
+          <Property Name="xglc" Type="text" />
+          <Property Name="xgwd" Type="text" />
+          <Property Name="sfhs" Type="text" />
+          <Property Name="htzsl" Type="int" />
+          <Property Name="htzsl2" Type="decimal" Precision="16" Scale="6" />
+          <Property Name="cght" Type="varchar" MaxLength="1000" />
+          <Property Name="JSFS" Type="text" />
+          <Property Name="DeliveryStart" Type="char" MaxLength="10" />
+          <Property Name="DeliveryEnd" Type="char" MaxLength="10" />
+        </EntityType>
         <EntityType Name="modeDataShare_5">
           <Key>
             <PropertyRef Name="id" />
@@ -107,6 +139,10 @@
           <Property Name="modedatacreatertype" Type="int" />
           <Property Name="modedatacreatedate" Type="varchar" MaxLength="10" />
           <Property Name="modedatacreatetime" Type="varchar" MaxLength="8" />
+          <Property Name="Sup_fullname" Type="varchar" MaxLength="200" />
+          <Property Name="DeliveryStart" Type="char" MaxLength="10" />
+          <Property Name="DeliveryEnd" Type="char" MaxLength="10" />
+          <Property Name="JSFS" Type="text" />
         </EntityType>
         <EntityType Name="uf_zh_PurchaseOrder_dt1">
           <Key>
@@ -122,8 +158,10 @@
           <Property Name="quantity" Type="varchar" MaxLength="50" />
           <Property Name="price" Type="varchar" MaxLength="50" />
           <Property Name="Pack_price" Type="varchar" MaxLength="50" />
+          <Property Name="Delivery" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityContainer Name="OAStoreContainer">
+          <EntitySet Name="formtable_main_84" EntityType="Self.formtable_main_84" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="modeDataShare_5" EntityType="Self.modeDataShare_5" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="modeDataShare_5_set" EntityType="Self.modeDataShare_5_set" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="uf_zh_PurchaseOrder" EntityType="Self.uf_zh_PurchaseOrder" Schema="dbo" store:Type="Tables" />
@@ -163,45 +201,13 @@
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="OA" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="OAContainer1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="uf_zh_PurchaseOrder" EntityType="OA.uf_zh_PurchaseOrder" />
-          <EntitySet Name="uf_zh_PurchaseOrder_dt1" EntityType="OA.uf_zh_PurchaseOrder_dt1" />
           <EntitySet Name="modeDataShare_5" EntityType="OA.modeDataShare_5" />
           <EntitySet Name="modeDataShare_5_set" EntityType="OA.modeDataShare_5_set" />
           <EntitySet Name="moderightinfo" EntityType="OA.moderightinfo" />
+          <EntitySet Name="uf_zh_PurchaseOrder_dt1" EntityType="OA.uf_zh_PurchaseOrder_dt1" />
+          <EntitySet Name="uf_zh_PurchaseOrder" EntityType="OA.uf_zh_PurchaseOrder" />
+          <EntitySet Name="formtable_main_84" EntityType="OA.formtable_main_84" />
         </EntityContainer>
-        <EntityType Name="uf_zh_PurchaseOrder">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="requestId" Type="Int32" />
-          <Property Name="Cg_no" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="company" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Sup_no" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Sup_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Pay_type" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Ship_addr" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="formmodeid" Type="Int32" />
-          <Property Name="modedatacreater" Type="Int32" />
-          <Property Name="modedatacreatertype" Type="Int32" />
-          <Property Name="modedatacreatedate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="modedatacreatetime" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="uf_zh_PurchaseOrder_dt1">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="mainid" Type="Int32" />
-          <Property Name="Cg_no" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Mat_id" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Mat_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="color" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Col_code" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="quantity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Pack_price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="modeDataShare_5">
           <Key>
             <PropertyRef Name="id" />
@@ -285,6 +291,76 @@
           <Property Name="joblevel" Type="Int32" />
           <Property Name="jobleveltext" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="uf_zh_PurchaseOrder_dt1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mainid" Type="Int32" />
+          <Property Name="Cg_no" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Mat_id" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Mat_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="color" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Col_code" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="quantity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pack_price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Delivery" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="uf_zh_PurchaseOrder">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="requestId" Type="Int32" />
+          <Property Name="Cg_no" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="company" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Sup_no" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Sup_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Pay_type" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Ship_addr" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="formmodeid" Type="Int32" />
+          <Property Name="modedatacreater" Type="Int32" />
+          <Property Name="modedatacreatertype" Type="Int32" />
+          <Property Name="modedatacreatedate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="modedatacreatetime" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Sup_fullname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryStart" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="DeliveryEnd" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="JSFS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="formtable_main_84">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="requestId" Type="Int32" />
+          <Property Name="lcbh" Type="String" MaxLength="999" FixedLength="false" Unicode="false" />
+          <Property Name="sqgs" Type="Int32" />
+          <Property Name="jbbm" Type="Int32" />
+          <Property Name="jbr" Type="Int32" />
+          <Property Name="sqrq" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="htjf" Type="String" MaxLength="999" FixedLength="false" Unicode="false" />
+          <Property Name="htyf" Type="String" MaxLength="999" FixedLength="false" Unicode="false" />
+          <Property Name="htbd" Type="String" MaxLength="999" FixedLength="false" Unicode="false" />
+          <Property Name="fkfs" Type="String" MaxLength="999" FixedLength="false" Unicode="false" />
+          <Property Name="htzje" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="xmcgspd" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="yshzspd" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="xjd" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="yjb" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="htfj" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fjsc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="xglc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="xgwd" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sfhs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="htzsl" Type="Int32" />
+          <Property Name="htzsl2" Type="Decimal" Precision="16" Scale="6" />
+          <Property Name="cght" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="JSFS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryStart" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="DeliveryEnd" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -293,41 +369,6 @@
         <Alias Key="Model" Value="OA" />
         <Alias Key="Target" Value="OA.Store" />
         <EntityContainerMapping CdmEntityContainer="OAContainer1" StorageEntityContainer="OAStoreContainer">
-          <EntitySetMapping Name="uf_zh_PurchaseOrder">
-            <EntityTypeMapping TypeName="OA.uf_zh_PurchaseOrder">
-              <MappingFragment StoreEntitySet="uf_zh_PurchaseOrder">
-                <ScalarProperty Name="modedatacreatetime" ColumnName="modedatacreatetime" />
-                <ScalarProperty Name="modedatacreatedate" ColumnName="modedatacreatedate" />
-                <ScalarProperty Name="modedatacreatertype" ColumnName="modedatacreatertype" />
-                <ScalarProperty Name="modedatacreater" ColumnName="modedatacreater" />
-                <ScalarProperty Name="formmodeid" ColumnName="formmodeid" />
-                <ScalarProperty Name="Ship_addr" ColumnName="Ship_addr" />
-                <ScalarProperty Name="Pay_type" ColumnName="Pay_type" />
-                <ScalarProperty Name="Sup_name" ColumnName="Sup_name" />
-                <ScalarProperty Name="Sup_no" ColumnName="Sup_no" />
-                <ScalarProperty Name="company" ColumnName="company" />
-                <ScalarProperty Name="Cg_no" ColumnName="Cg_no" />
-                <ScalarProperty Name="requestId" ColumnName="requestId" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="uf_zh_PurchaseOrder_dt1">
-            <EntityTypeMapping TypeName="OA.uf_zh_PurchaseOrder_dt1">
-              <MappingFragment StoreEntitySet="uf_zh_PurchaseOrder_dt1">
-                <ScalarProperty Name="Pack_price" ColumnName="Pack_price" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="quantity" ColumnName="quantity" />
-                <ScalarProperty Name="Col_code" ColumnName="Col_code" />
-                <ScalarProperty Name="color" ColumnName="color" />
-                <ScalarProperty Name="Mat_name" ColumnName="Mat_name" />
-                <ScalarProperty Name="Mat_id" ColumnName="Mat_id" />
-                <ScalarProperty Name="Cg_no" ColumnName="Cg_no" />
-                <ScalarProperty Name="mainid" ColumnName="mainid" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="modeDataShare_5">
             <EntityTypeMapping TypeName="OA.modeDataShare_5">
               <MappingFragment StoreEntitySet="modeDataShare_5">
@@ -410,6 +451,79 @@
                 <ScalarProperty Name="sharetype" ColumnName="sharetype" />
                 <ScalarProperty Name="righttype" ColumnName="righttype" />
                 <ScalarProperty Name="modeid" ColumnName="modeid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="uf_zh_PurchaseOrder_dt1">
+            <EntityTypeMapping TypeName="OA.uf_zh_PurchaseOrder_dt1">
+              <MappingFragment StoreEntitySet="uf_zh_PurchaseOrder_dt1">
+                <ScalarProperty Name="Delivery" ColumnName="Delivery" />
+                <ScalarProperty Name="Pack_price" ColumnName="Pack_price" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="Col_code" ColumnName="Col_code" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="Mat_name" ColumnName="Mat_name" />
+                <ScalarProperty Name="Mat_id" ColumnName="Mat_id" />
+                <ScalarProperty Name="Cg_no" ColumnName="Cg_no" />
+                <ScalarProperty Name="mainid" ColumnName="mainid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="uf_zh_PurchaseOrder">
+            <EntityTypeMapping TypeName="OA.uf_zh_PurchaseOrder">
+              <MappingFragment StoreEntitySet="uf_zh_PurchaseOrder">
+                <ScalarProperty Name="JSFS" ColumnName="JSFS" />
+                <ScalarProperty Name="DeliveryEnd" ColumnName="DeliveryEnd" />
+                <ScalarProperty Name="DeliveryStart" ColumnName="DeliveryStart" />
+                <ScalarProperty Name="Sup_fullname" ColumnName="Sup_fullname" />
+                <ScalarProperty Name="modedatacreatetime" ColumnName="modedatacreatetime" />
+                <ScalarProperty Name="modedatacreatedate" ColumnName="modedatacreatedate" />
+                <ScalarProperty Name="modedatacreatertype" ColumnName="modedatacreatertype" />
+                <ScalarProperty Name="modedatacreater" ColumnName="modedatacreater" />
+                <ScalarProperty Name="formmodeid" ColumnName="formmodeid" />
+                <ScalarProperty Name="Ship_addr" ColumnName="Ship_addr" />
+                <ScalarProperty Name="Pay_type" ColumnName="Pay_type" />
+                <ScalarProperty Name="Sup_name" ColumnName="Sup_name" />
+                <ScalarProperty Name="Sup_no" ColumnName="Sup_no" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="Cg_no" ColumnName="Cg_no" />
+                <ScalarProperty Name="requestId" ColumnName="requestId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="formtable_main_84">
+            <EntityTypeMapping TypeName="OA.formtable_main_84">
+              <MappingFragment StoreEntitySet="formtable_main_84">
+                <ScalarProperty Name="DeliveryEnd" ColumnName="DeliveryEnd" />
+                <ScalarProperty Name="DeliveryStart" ColumnName="DeliveryStart" />
+                <ScalarProperty Name="JSFS" ColumnName="JSFS" />
+                <ScalarProperty Name="cght" ColumnName="cght" />
+                <ScalarProperty Name="htzsl2" ColumnName="htzsl2" />
+                <ScalarProperty Name="htzsl" ColumnName="htzsl" />
+                <ScalarProperty Name="sfhs" ColumnName="sfhs" />
+                <ScalarProperty Name="xgwd" ColumnName="xgwd" />
+                <ScalarProperty Name="xglc" ColumnName="xglc" />
+                <ScalarProperty Name="fjsc" ColumnName="fjsc" />
+                <ScalarProperty Name="htfj" ColumnName="htfj" />
+                <ScalarProperty Name="yjb" ColumnName="yjb" />
+                <ScalarProperty Name="xjd" ColumnName="xjd" />
+                <ScalarProperty Name="yshzspd" ColumnName="yshzspd" />
+                <ScalarProperty Name="xmcgspd" ColumnName="xmcgspd" />
+                <ScalarProperty Name="htzje" ColumnName="htzje" />
+                <ScalarProperty Name="fkfs" ColumnName="fkfs" />
+                <ScalarProperty Name="htbd" ColumnName="htbd" />
+                <ScalarProperty Name="htyf" ColumnName="htyf" />
+                <ScalarProperty Name="htjf" ColumnName="htjf" />
+                <ScalarProperty Name="sqrq" ColumnName="sqrq" />
+                <ScalarProperty Name="jbr" ColumnName="jbr" />
+                <ScalarProperty Name="jbbm" ColumnName="jbbm" />
+                <ScalarProperty Name="sqgs" ColumnName="sqgs" />
+                <ScalarProperty Name="lcbh" ColumnName="lcbh" />
+                <ScalarProperty Name="requestId" ColumnName="requestId" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

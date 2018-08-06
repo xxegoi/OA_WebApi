@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="94585e640f8844a7945410ddace97a73" Name="Diagram1" ZoomLevel="37" DisplayType="true">
+        <EntityTypeShape EntityType="DYJXCModel.t_BarCodeLabel" Width="1.75" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DYJXCModel.t_BarCodeLabelDetail" Width="1.875" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DYJXCModel.t_CPInBillDetail" Width="2" PointX="3.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DYJXCModel.t_CPInBillHeader" Width="2.625" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DYJXCModel.t_CPInBillOFXiMa" Width="1.875" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DYJXCModel.t_CPOutBillDetail" Width="1.875" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DYJXCModel.t_CPOutBillHeader" Width="1.75" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DYJXCModel.t_OutWhouseDetail" Width="1.75" PointX="10.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DYJXCModel.t_OutWhouseHeader" Width="1.875" PointX="6.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DYJXCModel.t_CPOutBillOfXiMa" Width="1.5" PointX="3.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DYJXCModel.t_InWhouseDetail" Width="1.875" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DYJXCModel.t_InWhouseHeader" Width="1.75" PointX="13.75" PointY="4.75" IsExpanded="true" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

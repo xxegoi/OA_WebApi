@@ -24,5 +24,6 @@ namespace OA_WebApi.Models
         public string quantity { get; set; }
         public string price { get; set; }
         public string Pack_price { get; set; }
+        public string Delivery { get; set; }
     }
 }

@@ -28,11 +28,11 @@ namespace OA_WebApi.Common
             {
                 message = string.IsNullOrEmpty(msg.ToString()) ? procmsg.ToString() : msg.ToString();
 
-                LogHandler.Error("requestid: "+requestid+"\t"+message);
+                LogHandler.Error("requestid: "+requestid+"\tMessage："+message+"\tData："+datastr.Replace("\\",""));
             }
             else
             {
-                message = string.Format("{0}请求执行成功",requestid);
+                message = string.Format("{0}请求执行成功,Data:{1}",requestid, datastr.Replace("\\", ""));
                 LogHandler.Info(message);
             }
 
