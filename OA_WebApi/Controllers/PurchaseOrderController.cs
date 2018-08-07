@@ -7,26 +7,23 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using OA_WebApi.Common;
-
-
+using System.Web;
 
 namespace OA_WebApi.Controllers
 {
     [Log]
     [Auth]
-    public class PurchaseOrderController : ApiController
+    public class PurchaseOrderController : ApiController 
     {
-        OAContainer1 db = new OAContainer1();
 
         [HttpPost]
         public ResponseModel Put(JObject obj)
         {
             string message = "";
             var data = obj.GetValue("data");
-            string datastr = data == null ? "" : data.ToString();
+            string datastr = data == null ? string.Empty : data.ToString();
 
-            var requestId =obj.GetValue("requestid").ToString();
-
+            var requestId =obj.GetValue("requestid")==null?string.Empty:obj.GetValue("requestid").ToString();
 
             uf_zh_PurchaseOrder header;
             List<uf_zh_PurchaseOrder_dt1> rows;
@@ -38,7 +35,6 @@ namespace OA_WebApi.Controllers
                 {
                     return new FailResponseModel(requestId, "", "data值为空");
                 }
-
                 
                 if (requestId == string.Empty)
                 {
@@ -50,7 +46,7 @@ namespace OA_WebApi.Controllers
                     var datacontext = JObject.Parse(datastr);
                     if (uf_zh_PurchaseOrderValiderModel.Valid(datacontext,out header,out rows, out message))
                     {
-
+                        var db = OADBContext.GetDBContext();
                         db.uf_zh_PurchaseOrder.Add(header);
                         db.SaveChanges();
                         //插入明细
@@ -91,6 +87,8 @@ namespace OA_WebApi.Controllers
             int?[] shareType = new int?[] { 80, 90 };
             int?[] shareTypeNotIn = new int?[] { 80, 81, 84, 85, 89, 90 };
             int?[] rightType = new int?[] { 1, 2, 3 };
+
+            var db = OADBContext.GetDBContext();
 
             //权限数量，对应模块中的默认共享权限
             var count = (from m in db.moderightinfo

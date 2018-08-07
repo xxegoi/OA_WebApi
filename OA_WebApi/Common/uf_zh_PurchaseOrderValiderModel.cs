@@ -9,7 +9,7 @@ namespace OA_WebApi.Common
 {
     public class uf_zh_PurchaseOrderValiderModel
     {
-        static OAContainer1 db = new OAContainer1();
+        
 
         public static bool Valid(JToken obj,out uf_zh_PurchaseOrder header,out List<uf_zh_PurchaseOrder_dt1> details, out string message)
         {
@@ -36,6 +36,8 @@ namespace OA_WebApi.Common
                 {
                     var cg_no = item.ToString();
                     message +="cg_no："+ cg_no+"\t";
+
+                    var db = OADBContext.GetDBContext();
 
                     if (db.uf_zh_PurchaseOrder.Count(o => o.Cg_no == cg_no) > 0)
                     {

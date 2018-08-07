@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http.Filters;
+using System.Web.Http.Controllers;
 
 namespace OA_WebApi.Common
 {
@@ -37,6 +38,27 @@ namespace OA_WebApi.Common
             }
 
 
+        }
+
+        public override void OnActionExecuting(HttpActionContext actionContext)
+        {
+
+            var httpcontext = actionContext.Request.Properties["MS_HttpContext"] as System.Web.HttpContextWrapper;
+
+            var ip = httpcontext.Request.UserHostAddress;
+
+            var controller = actionContext.ControllerContext.ControllerDescriptor.ControllerName;
+            var action = actionContext.ActionDescriptor.ActionName;
+            var data = actionContext.ActionArguments["obj"].ToString();
+
+            string log = string.Format("IP:{0}\tControll:{1}\tAction:{2}\tData:{3}", ip, controller, action, data);
+
+            log4net.ILog logger = log4net.LogManager.GetLogger("RequestLog");
+
+            logger.Info(log);
+
+            base.OnActionExecuting(actionContext);
+            
         }
     }
 }
